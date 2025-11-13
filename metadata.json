@@ -1,0 +1,5 @@
+{
+  "name": "Data Intelligence Agent",
+  "description": "An AI-powered data engineering assistant that democratizes data analysis through natural language interaction. Users can query structured datasets conversationally and receive automated insights, visualizations, and actionable intelligence.",
+  "requestFramePermissions": []
+}
