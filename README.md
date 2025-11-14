@@ -10,8 +10,6 @@ Upload a dataset, ask a question like *“What are the top 10 products by revenu
 
 Built with **Google’s Gemini API**, the agent works like your personal data engineer — transforming raw questions into clear, actionable intelligence.
 
-![Data Intelligence Agent Screenshot](https://i.imgur.com/example.png)  
-*(Replace with an actual app screenshot)*
 
 ---
 
