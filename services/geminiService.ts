@@ -37,7 +37,7 @@ Format as a numbered list. Be specific about operations.
 
 export async function generatePythonCode(plan: string, schema: string): Promise<string> {
     const prompt = `
-Convert this analysis plan into Python code using Pandas and Matplotlib.
+Convert this analysis plan into Python code using Pandas.
 
 Plan:
 ${plan}
@@ -48,9 +48,9 @@ ${schema}
 Requirements:
 - The data is in a pandas DataFrame named 'df'.
 - Add comments for each step.
-- Use only pandas, numpy, and matplotlib libraries.
+- Use only pandas, numpy.
 - Handle potential errors (e.g., null values).
-- If creating a chart, save it to a file named 'output_chart.png' and create a title for the chart.
+- If creating a chart is implied, note that it will be handled separately.
 - Ensure the final line of code is the variable containing the result (e.g. a dataframe or a descriptive string), if any.
 
 Output ONLY the Python code, with no explanations or markdown formatting.
@@ -75,6 +75,42 @@ Output ONLY the Python code, with no explanations or markdown formatting.
         throw new Error("Failed to generate Python code. Please check your plan and API key.");
     }
 }
+
+export async function generateSQLQuery(query: string, schema: string): Promise<string> {
+    const prompt = `
+You are a SQL expert. Based on the user's question and the data schema, write a SQL query.
+
+User Question: "${query}"
+
+Table Schema (the table is named 'source_data'):
+${schema}
+
+Requirements:
+- Use standard SQL syntax.
+- The table name is 'source_data'.
+- Add comments to explain complex logic if necessary.
+
+Output ONLY the SQL query, with no explanations or markdown formatting.
+`;
+    try {
+        const response = await ai.models.generateContent({
+            model: 'gemini-2.5-pro',
+            contents: prompt,
+        });
+        let sql = response.text;
+         if (sql.startsWith("```sql")) {
+            sql = sql.substring(5);
+        }
+        if (sql.endsWith("```")) {
+            sql = sql.substring(0, sql.length - 3);
+        }
+        return sql.trim();
+    } catch (error) {
+        console.error("Error generating SQL query:", error);
+        throw new Error("Failed to generate SQL query. Please check your plan and API key.");
+    }
+}
+
 
 export async function summarizeResults(query: string, plan: string, result_preview: string): Promise<string> {
     const prompt = `

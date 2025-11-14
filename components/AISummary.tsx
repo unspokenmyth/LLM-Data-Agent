@@ -1,6 +1,8 @@
 
 import React from 'react';
 import { LightBulbIcon } from './icons/LightBulbIcon';
+import { CollapsibleCard } from './CollapsibleCard';
+import { DownloadIcon } from './icons/DownloadIcon';
 
 interface AISummaryProps {
     summary: string;
@@ -44,21 +46,46 @@ const SimpleMarkdownRenderer: React.FC<{ content: string }> = ({ content }) => {
         }
     });
 
-    flushList(); // Flush any remaining list items
+    flushList(); 
 
     return <>{elements}</>;
 };
 
+const downloadFile = (content: string, filename: string, mimeType: string) => {
+    const blob = new Blob([content], { type: mimeType });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+};
+
+
 export const AISummary: React.FC<AISummaryProps> = ({ summary }) => {
+    
+    const handleDownload = () => {
+        downloadFile(summary, 'ai_summary.md', 'text/markdown');
+    };
+
+    const actions = (
+        <button onClick={handleDownload} className="p-1 text-text-secondary hover:text-text-primary" aria-label="Download summary">
+            <DownloadIcon className="w-5 h-5" />
+        </button>
+    );
+    
     return (
-        <div className="bg-white rounded-lg shadow-sm border border-border-light p-6">
-             <div className="flex items-center gap-3 mb-3">
-                <LightBulbIcon className="w-6 h-6 text-primary-action" />
-                <h3 className="font-bold text-text-primary text-xl">AI Summary & Insights</h3>
-            </div>
-            <div className="text-text-secondary space-y-2">
+        <CollapsibleCard
+            title="AI Summary & Insights"
+            icon={<LightBulbIcon className="w-6 h-6" />}
+            actions={actions}
+            defaultOpen={true}
+        >
+            <div className="text-text-secondary space-y-2 p-4 bg-surface">
                 <SimpleMarkdownRenderer content={summary} />
             </div>
-        </div>
+        </CollapsibleCard>
     );
 };

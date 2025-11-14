@@ -15,6 +15,8 @@ export enum PipelineStage {
     COMPLETE = 'Complete',
 }
 
+export type ExecutionMode = 'python' | 'sql';
+
 export interface ValidationIssue {
     severity: 'critical' | 'warning' | 'info';
     message: string;
@@ -35,16 +37,20 @@ export interface ResultMetadata {
     executionTime: number;
     timestamp: string;
     outputFile: string;
+    fileHash: string;
+    isFromCache?: boolean;
 }
 
 export interface AppState {
+    id: string;
     status: Status;
     currentStage: PipelineStage | null;
     query: string;
     file: File | null;
+    executionMode: ExecutionMode;
     validationReport: ValidationReport | null;
     analysisPlan: string | null;
-    generatedCode: string | null;
+    generatedScript: string | null;
     resultData: Record<string, any>[] | null;
     chartConfig: any | null;
     summary: string | null;
