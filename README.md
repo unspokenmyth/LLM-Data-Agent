@@ -1,109 +1,70 @@
-# 🤖📊 Data Intelligence Agent
+# Data Intelligence Agent 🤖📊
 
-The **Data Intelligence Agent** is a smart, AI-powered assistant that lets anyone explore and analyze data using simple natural language.  
-Upload a dataset, ask a question like *“What are the top 10 products by revenue?”* and instantly receive:
+Welcome to the Data Intelligence Agent, an AI-powered assistant designed to make data analysis accessible to everyone. Simply upload your dataset, ask a question in plain English, and receive automated insights, visualizations, and ready-to-use code in seconds.
 
-- Clean Python/Pandas or SQL code  
-- Interactive visualizations  
-- Step-by-step reasoning  
-- A concise AI-generated insight summary  
+Powered by Google's Gemini API, this tool acts as your personal data engineer, transforming complex data queries into clear, actionable intelligence.
 
-Built with **Google’s Gemini API**, the agent works like your personal data engineer — transforming raw questions into clear, actionable intelligence.
-
+![Data Intelligence Agent Screenshot](https://i.imgur.com/example.png) *(Note: Replace with an actual screenshot of the app)*
 
 ---
 
-## ✨ Features at a Glance
+## ✨ Key Features
 
-### 🗣 Natural Language Interface  
-Ask questions as if you're talking to a teammate — no coding or SQL required.
-
-### 🔄 Dual Execution Modes  
-Choose how the analysis is executed:  
-- **Python / Pandas** → for transformations, grouping, custom logic  
-- **SQL** → for analytical queries, aggregations, filtering
-
-### 📊 Automated Analysis Pipeline  
-Every query goes through a complete data workflow:
-
-1. **Data Validation**  
-   Quick checks for schema, missing values, duplicates, and data types.
-
-2. **AI Analysis Plan**  
-   A logical breakdown of how the question should be answered.
-
-3. **Code Generation**  
-   Clean, documented Python/Pandas or SQL code created by the AI.
-
-4. **Visualization**  
-   Automatic chart selection (Bar, Line, or Pie) using Chart.js.
-
-5. **Summary of Insights**  
-   A short, human-readable explanation of what the results mean.
-
-### 🗂 Interactive Results UI  
-All outputs appear in collapsible, organized cards:
-- Summary  
-- Chart  
-- Generated Code  
-- Data Preview  
-- Execution Logs  
-
-Helps you focus only on what you need.
-
-### 💾 Code Export & Reuse  
-Copy the code with one click — or download it for your notebooks and scripts.
-
-### 🕒 Session History & Caching  
-Your past analyses are saved in the sidebar.  
-Repeat a similar question on the same data?  
-→ The result loads instantly from cache.
-
-### 📱 Responsive, Polished UI  
-A clean, intuitive design built with React + Tailwind that works across all screen sizes.
+-   **Natural Language Interaction**: Ask questions about your data as if you're talking to an expert. No need to write complex code or queries.
+-   **Dual Execution Modes**: Choose between generating **Python/Pandas** code for complex transformations or standard **SQL** queries for database-style analysis.
+-   **Automated Analysis Pipeline**: The agent follows a complete data analysis workflow:
+    1.  **Data Validation**: Performs a quick check on your file for issues like missing values or duplicates.
+    2.  **AI-Generated Plan**: Creates a logical, step-by-step plan to answer your question.
+    3.  **Code Generation**: Writes clean, commented Python or SQL code based on the plan.
+    4.  **Data Visualization**: Automatically generates the most appropriate chart (Bar, Line, or Pie) to visualize the results.
+    5.  **AI-Powered Summary**: Delivers a concise summary with key findings and actionable business insights.
+-   **Interactive Results**: All outputs are presented in collapsible cards, allowing you to focus on what's important.
+-   **Code Export**: Easily copy or download the generated code for use in your own projects.
+-   **Session History & Caching**: Previous analyses are saved in the sidebar for quick access. Queries on the same data are cached for instant results.
+-   **Responsive Design**: A clean, modern, and responsive UI that works beautifully on any screen size.
 
 ---
 
-## 🚀 Getting Started
+## 🚀 How to Use
 
-1. **Open the App**  
-   Launch the `index.html` file in your browser.
+Getting started is simple:
 
-2. **Start a New Analysis**  
-   Click **“Start New Analysis”** from the landing page or sidebar.
-
-3. **Upload Your Dataset**  
-   Supports **CSV** and **JSON**.  
-   The app will run quick validation automatically.
-
-4. **Choose Execution Mode**  
-   - Python/Pandas  
-   - SQL  
-
-5. **Ask Your Question**  
-   Examples:
-   - *“Show me the average revenue by region.”*  
-   - *“Plot monthly sales for 2023.”*  
-   - *“Find the top 5 performing categories.”*
-
-6. **Click Analyze**  
-   Watch the AI run through validation, planning, code generation, execution, and visualization.
-
-7. **Explore Your Results**  
-   Review:
-   - AI summary  
-   - Chart  
-   - Data preview  
-   - Exportable code  
-   - Logs  
+1.  **Launch the App**: Open the `index.html` file in your browser.
+2.  **Start a New Analysis**: Click the "Start New Analysis" button on the welcome screen or in the sidebar.
+3.  **Upload Your Data**:
+    -   Click to select a local **CSV** or **JSON** file.
+    -   The app will perform a quick validation.
+4.  **Choose Execution Mode**: Select whether you want the analysis performed using **Python/Pandas** or **SQL**.
+5.  **Ask a Question**: Type your question into the text box (e.g., *"What is the average revenue by region?"* or *"Plot the quarterly sales trend for the last year"*).
+6.  **Analyze**: Hit the "Analyze Data" button.
+7.  **Review the Results**: Watch as the AI progresses through the pipeline and then explore your interactive results, including the AI summary, chart, data preview, and the generated code.
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Technology Stack
 
-- **Frontend:** React, TypeScript, Tailwind CSS  
-- **AI Engine:** Google Gemini API (`@google/genai`)  
-- **Visualization:** Chart.js  
-- **UI Icons:** Clean custom SVG icon set  
+-   **Frontend**: React, TypeScript, Tailwind CSS
+-   **AI Engine**: Google Gemini API (`@google/genai`)
+-   **Charting Library**: Chart.js
+-   **Icons**: A custom set of SVG icons for a clean and consistent look.
 
 ---
+
+## 📁 Project Structure
+
+The project is organized into a modular structure for clarity and maintainability:
+
+```
+/
+├── components/         # Reusable React components (UI elements)
+│   ├── icons/          # SVG icon components
+│   └── ...
+├── hooks/              # Custom React hooks (e.g., useCopyToClipboard)
+├── services/           # API call logic (e.g., geminiService.ts)
+├── types/              # TypeScript type definitions (e.g., AppState)
+├── App.tsx             # Main application component
+├── index.html          # Entry point HTML file
+└── index.tsx           # React root renderer
+```
+
+This structured approach ensures that the application is easy to understand, extend, and maintain.
