@@ -4,8 +4,6 @@ Welcome to the Data Intelligence Agent, an AI-powered assistant designed to make
 
 Powered by Google's Gemini API, this tool acts as your personal data engineer, transforming complex data queries into clear, actionable intelligence.
 
-![Data Intelligence Agent Screenshot](https://i.imgur.com/example.png) *(Note: Replace with an actual screenshot of the app)*
-
 ---
 
 ## ✨ Key Features
